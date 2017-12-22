@@ -3,17 +3,24 @@ node {
       checkout scm
    }
    
-   stage('App_build') {
-      echo "Building app for Build No: ${env.BUILD_NUMBER}. (not implemented)"
+   stage('Build & Unit Test') {
+      
    }
-   
-   stage('Test') {
-      echo "Testing app... (not implemented)"
-   }
-   
+      
    stage('Docker_build') {
       echo "Building Docker image..."
       echo "Current directory: ${pwd}"
       sh "sudo docker build -t statelessphp:${env.BUILD_NUMBER} ./stateless-php"
    }
+   
+   stage('Final Testing') {
+      
+   }
+   
+   stage('Docker_push') {
+      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+         sh 'echo uname=$USERNAME'
+      }
+   }
+   
 }
