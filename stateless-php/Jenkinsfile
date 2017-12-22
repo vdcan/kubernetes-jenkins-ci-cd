@@ -12,6 +12,7 @@ node {
    stage('Docker_build') {
       echo "Building Docker image..."
       echo "Current directory: ${pwd}"
+      sh 'cd stateless-php'
       docker.build("hfokr/statelessphp:${env.BUILD_ID}")
       //sh "sudo docker build -t statelessphp:${env.BUILD_NUMBER} ./stateless-php"
    }
