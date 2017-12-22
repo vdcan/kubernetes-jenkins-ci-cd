@@ -18,7 +18,7 @@ node {
    }
    
    stage('Docker_push') {
-      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_ub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
          sh 'echo uname=$USERNAME'
       }
    }
