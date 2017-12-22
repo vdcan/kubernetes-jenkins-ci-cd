@@ -2,7 +2,18 @@ node {
    stage('Checkout') {
       checkout scm
    }
-   stage('Build') {
-      echo "My buildNo is: ${env.BUILD_NUMBER}"
+   
+   stage('App_build') {
+      echo "Building app for Build No: ${env.BUILD_NUMBER}. (not implemented)"
+   }
+   
+   stage('Test') {
+      echo "Testing app... (not implemented)"
+   }
+   
+   stage('Docker_build') {
+      echo "Building Docker image..."
+      echo "Current directory: ${pwd}"
+      sh 'sudo docker build -t statelessphp:${env.BUILD_NUMBER} ./stateless-php'
    }
 }
