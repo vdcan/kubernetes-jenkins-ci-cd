@@ -3,6 +3,6 @@ node {
       checkout scm
    }
    stage('Build') {
-      echo 'Hello world! (Build)'
+      echo ${buildVersion}
    }
 }
