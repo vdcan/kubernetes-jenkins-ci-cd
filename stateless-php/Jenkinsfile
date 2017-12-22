@@ -1,0 +1,8 @@
+node {
+   stage('SCM') {
+      git 'https://github.com/hijmenfokker/kubernetes-jenkins-ci-cd.git'
+   }
+   stage('Build') {
+      echo 'Hello world! (Build)'
+   }
+}
