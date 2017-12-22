@@ -3,6 +3,6 @@ node {
       checkout scm
    }
    stage('Build') {
-      echo ${env.BUILD_NUMBER}
+      echo "My branch is: ${env.BRANCH_NAME}"
    }
 }
