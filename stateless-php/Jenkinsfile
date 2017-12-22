@@ -1,4 +1,6 @@
 node {
+   def docker_app
+   
    stage('Checkout') {
       checkout scm
    }
@@ -10,7 +12,8 @@ node {
    stage('Docker_build') {
       echo "Building Docker image..."
       echo "Current directory: ${pwd}"
-      sh "sudo docker build -t statelessphp:${env.BUILD_NUMBER} ./stateless-php"
+      docker.build("hfokr/statelessphp:${env.BUILD_ID}")
+      //sh "sudo docker build -t statelessphp:${env.BUILD_NUMBER} ./stateless-php"
    }
    
    stage('Final Testing') {
@@ -20,6 +23,9 @@ node {
    stage('Docker_push') {
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
          sh 'echo uname=$USERNAME'
+      }
+      docker.withRegistry('https://registry.hub.docker.com', 'docker_hub') {
+         docker_app.push()
       }
    }
    
