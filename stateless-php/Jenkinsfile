@@ -6,7 +6,7 @@ node {
    }
    
    stage('Build & Unit Test') {
-      
+      echo "Not implemented."
    }
       
    stage('Docker_build') {
@@ -16,15 +16,19 @@ node {
       //sh "sudo docker build -t statelessphp:${env.BUILD_NUMBER} ./stateless-php"
    }
    
-   stage('Final Testing') {
-      
+   stage('Automated Testing') {
+      echo "Not implemented."
    }
    
-   stage('Docker_push') {
+   stage('Push Docker image') {
       docker.withRegistry('https://registry.hub.docker.com', 'docker_hub') {
          docker_app.push("${env.BUILD_NUMBER}")
          docker_app.push("latest")
       }
+   }
+   
+   stage('Deploy to Kubernetes_test'){
+      
    }
    
 }
