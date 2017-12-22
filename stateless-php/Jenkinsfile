@@ -21,9 +21,6 @@ node {
    }
    
    stage('Docker_push') {
-      withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'docker_hub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
-         sh 'echo uname=$USERNAME'
-      }
       docker.withRegistry('https://registry.hub.docker.com', 'docker_hub') {
          docker_app.push("${env.BUILD_NUMBER}")
          docker_app.push("latest")
