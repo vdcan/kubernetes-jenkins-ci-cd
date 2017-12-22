@@ -28,7 +28,7 @@ node {
    }
    
    stage('Deploy to Kubernetes_test'){
-      
+      echo "Branch name: ${env.BRANCH_NAME}"
    }
    
 }
