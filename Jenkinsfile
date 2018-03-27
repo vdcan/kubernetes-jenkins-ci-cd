@@ -16,5 +16,15 @@ pipeline {
         echo 'Building Docker image...'
       }
     }
+    stage('Docker Push') {
+      steps {
+        echo 'Pushing to Docker Registry...'
+      }
+    }
+    stage('Kubernetes') {
+      steps {
+        echo 'Updating Kubernetes resources...'
+      }
+    }
   }
 }
