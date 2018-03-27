@@ -6,12 +6,12 @@ pipeline {
         git 'https://github.com/hijmenfokker/kubernetes-jenkins-ci-cd.git'
       }
     }
-    stage('Build & Unit Test') {
+    stage('Maven Build') {
       steps {
         echo 'Not implemented'
       }
     }
-    stage('Docker build') {
+    stage('Docker Build') {
       steps {
         echo 'Building Docker image...'
       }
