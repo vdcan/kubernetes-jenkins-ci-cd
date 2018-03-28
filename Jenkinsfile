@@ -25,9 +25,11 @@ pipeline {
     stage('SonarQube') {
       steps {
         echo 'Uploading to Sonar...'
-        sh '''mvn sonar:sonar \\
-  -Dsonar.host.url=http://52.226.67.67 \\
-  -Dsonar.login=5c965226d12f03ad373ae5d7ad2b660d52839123'''
+        withCredentials([string(credentialsId: 'sonar.login', variable: 'TOKEN')]) {
+          sh """
+            mvn sonar:sonar -Dsonar.host.url=http://52.226.67.67 -Dsonar.login=$TOKEN
+          """
+        }
       }
     }
     stage('Kubernetes') {
