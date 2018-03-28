@@ -8,7 +8,8 @@ pipeline {
     }
     stage('Maven Build') {
       steps {
-        echo 'Not implemented'
+        echo 'Building Maven...'
+        sh 'mvn clean package'
       }
     }
     stage('Docker Build') {
